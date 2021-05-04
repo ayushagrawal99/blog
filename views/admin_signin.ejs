@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/admin_signin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/"><span> Home</span></a>
+            </li>
+            <li>
+                <a href="/admin-sign-up"><span>Admin Sign UP</span></a>
+            </li>
+            <li>
+                <a href="/admin-sign-in"><span>Sign In</span></a>
+            </li>
+        </ul>
+    </nav>
+    <div id="sign-in-container">
+        <div id="sign-in-div">
+            <div id="sign-in-details">
+                <form action="/Admin/sign-in" method="POST">
+                    <h1>Sign in</h1>
+                    <div class="form-fields">
+                        <input type="email" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-fields">
+                        <input type="password" name="password" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="usertype">
+                        <legend >Sign In as a :</legend>
+                        <div class="usertype-div">
+                            <div class="radio-type">
+                              <input type="radio" name="usertype" value="user" checked>
+                                <label for="gridRadios2">
+                                  User
+                              </label>
+                            </div>
+                          <div class="radio-type">
+                            <input type="radio" name="usertype"  value="admin">
+                              <label for="gridRadios1">
+                                Admin
+                              </label>
+                          </div>
+                        </div>
+                    </div>
+                    <div id="sign-in-button">
+                        <button type="submit">
+                            <span>SIGN IN</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

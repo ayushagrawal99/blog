@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/admin_dashboard.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/Admin/admin_dashboard">
+                    <span>
+                     Users
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/user-sign-up">
+                    <span>
+                        Create New User
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="log-out">
+            <a href="/log-out">
+                <span>
+                    Log Out
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <% for(let user of users) { %>
+                       
+        <p><%= user.name%></p>
+        
+    <% } %>
+</body>
+</html>

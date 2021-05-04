@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="/css/admin_signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign Up</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/">
+                    <span>
+                     Home
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin-sign-up">
+                    <span>
+                        Admin Sign UP
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin-sign-in">
+                    <span>
+                        Sign In
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="sign-up-container">
+        <div id="sign-up-fields">
+            <form action="/Admin/sign-up" method="POST">
+                <h2>Sign up</h2>
+                <div class="form-fields">
+                    <input type="text" name="name" class="inputs" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-fields">
+                    <input type="email" name="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-fields">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="form-fields">
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-fields-submit">
+                    <button type="submit">
+                        <span>SIGN UP</span>
+                    </button>
+                </div>
+            </form>
+            <hr>
+            <div id="extra-sign-up">
+                <span>If you have already account then <a href="/admin-sign-in">sign-in</a></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+}
+
+nav{
+    width: 100%;
+    height: 10vh;
+    background-color: rosybrown;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+}
+
+nav ul li a span{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+body{
+    background:linear-gradient(90deg,#ffc -26%,#cff 101%)
+}
+
+#sign-up-container{
+    font-family:"Arial, Helvetica, sans-serif";
+    position:relative;
+    width:35%;
+    height:500px;
+    margin:5% auto;
+    background-color:#fff;
+    border-radius:15px
+}
+
+#sign-up-fields{
+    position:absolute;
+    right:0;box-sizing:border-box;
+    width:90%;
+    height:90%;
+    margin:5% 3% 5% 5%
+}
+
+h2{
+    font-family:Noto Sans;
+    font-size:2rem;
+    margin-left:35%;
+    margin-bottom:30px
+}
+
+.form-fields{
+    display:block;
+    width:80%;
+    margin:7% 0 7% 5%;
+    border-bottom:1px solid
+}
+
+
+.form-fields input[type=email],
+.form-fields input[type=password],
+.form-fields input[type=text]{
+    box-sizing:border-box;
+    width:75%;
+    margin-left:3%;
+    padding:3px 6px 6px;
+    font-size:13px;
+    border:none;
+    transition:.5s ease
+}
+
+.form-fields input:focus{
+    outline:none
+}
+
+.form-fields-submit{
+    width:30%;
+    margin:8% 0 6% 30%
+}
+
+.form-fields-submit button{
+    width:100%;
+    padding:4px;
+    background:linear-gradient(90deg,#3cf 0,#f9c);
+    border-radius:10px;
+    cursor:pointer
+}
+
+ #extra-sign-up{
+     margin-top:4%
+}
+
+#extra-sign-up span{
+    margin-left:5%;
+    font-size:15px
+}
+
+
+
+
+
+
+
