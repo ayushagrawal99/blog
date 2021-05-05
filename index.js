@@ -1,13 +1,14 @@
+const path = require("path");
 const express = require("express");
 const app = express();
 const db = require("./config/database");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
-app.use(express.urlencoded());
-
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static("./assets"));
 
@@ -22,7 +23,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 600000,
+            expires: 6000000,
         },
     })
 );

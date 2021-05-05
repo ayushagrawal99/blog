@@ -20,7 +20,7 @@ module.exports.User_SignUp = async (req, res, next) => {
                     password: req.body.password,
                 });
 
-                return res.redirect("/Admin/admin_dashboard");
+                return res.redirect("/Admin/admin_dashboard?page=1");
             }
         } else {
             res.status(400).json({ message: "Password does not match" });

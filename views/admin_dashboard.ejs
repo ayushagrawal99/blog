@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="/css/admin_dashboard.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Admin Dashboard</title>
 </head>
 <body>
     <nav>
         <ul>
             <li>
-                <a href="/Admin/admin_dashboard">
+                <a href="/Admin/admin_dashboard?page=1">
                     <span>
-                     Users
+                     User
                     </span>
                 </a>
             </li>
@@ -34,10 +35,53 @@
         </div>
     </nav>
 
-    <% for(let user of users) { %>
-                       
-        <p><%= user.name%></p>
-        
-    <% } %>
+    <table id="customers">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Read Access</th>
+            <th>Update Access</th>
+            <th>Delete Access</th>
+            <th>Update</th>
+        </tr>
+        <% for(let user of users) { %>
+        <tr>
+            <form action="/Admin/update-user" method="POST">
+                <td><%= user.name%></td>
+                <input type="hidden" name="name" value='<%= user.name%>'>
+                <td><%= user.email%></td>
+                <input type="hidden" name="email" value='<%= user.email%>'>
+                <td><input type="checkbox" name="readOnly" value="read" <%= user.readOnly ? "checked" : "" %>></td>
+                <td><input type="checkbox" name="updateOnly" value="update" <%= user.updateOnly ? "checked" : "" %> ></td>
+                <td><input type="checkbox" name="deleteOnly" value="delete" <%= user.deleteOnly ? "checked" : "" %>></td>
+                <td><button type="submit" class="btn">Update</button></td>
+            </form>
+        </tr>
+        <% } %>
+    </table>
+
+    <div class="center">
+        <div class="pagination">
+            
+            <% if(currentPage != 1 && previousPage != 1) { %>
+                <a href="/Admin/admin_dashboard?page=1">1</a>
+            <% } %>
+
+            <% if(hasPreviousPage) { %>
+                <a href="/Admin/admin_dashboard?page=<%= previousPage%>" ><%= previousPage%></a>
+            <% } %>
+
+            <a href="/Admin/admin_dashboard?page=<%= currentPage%>" class="active"><%= currentPage%></a>
+
+            <% if(hasNextPage) { %>
+            <a href="/Admin/admin_dashboard?page=<%= nextPage%>" ><%= nextPage%></a>
+            <% } %>
+
+            <%  if(lastPage != currentPage && lastPage != nextPage) { %>
+            <a href="/Admin/admin_dashboard?page=<%= lastPage%>" ><%= lastPage%></a>
+            <% } %>
+
+        </div>
+      </div>
 </body>
 </html>

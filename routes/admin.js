@@ -15,4 +15,10 @@ router.get(
     Admin_Dashboard_controller.Admin_Dashboard
 );
 
+router.post(
+    "/update-user",
+    sessionChecker,
+    Admin_Dashboard_controller.Update_User
+);
+
 module.exports = router;
