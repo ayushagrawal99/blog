@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home Page</title>
 </head>
@@ -12,7 +13,7 @@
     <nav>
         <ul>
             <li>
-                <a href="/">
+                <a href="/home?page=1">
                     <span>
                      Home
                     </span>
@@ -21,7 +22,7 @@
             <li>
                 <a href="/admin-sign-up">
                     <span>
-                        Admin Sign UP
+                        Sign Up
                     </span>
                 </a>
             </li>
@@ -35,5 +36,41 @@
         </ul>
     </nav>
 
+    <div class="all-blog">
+        <% for(let blog of blogs) { %>
+
+            <div class="card">
+                <img src="https://cdn.pixabay.com/photo/2020/12/25/11/57/flamingos-5859192_960_720.jpg" alt="John" style="width:100%">
+                <p class="title"><%= blog.title %></p>
+                <p class="wrapper"><%= blog.description %></p>
+                <p><button>Full Blog</button></p>
+            </div>
+    
+        <% } %>  
+    </div>
+
+    <div class="center">
+        <div class="pagination">
+            
+            <% if(currentPage != 1 && previousPage != 1) { %>
+                <a href="/home?page=1">1</a>
+            <% } %>
+
+            <% if(hasPreviousPage) { %>
+                <a href="/home?page=<%= previousPage%>" ><%= previousPage%></a>
+            <% } %>
+
+            <a href="/home?page=<%= currentPage%>" class="active"><%= currentPage%></a>
+
+            <% if(hasNextPage) { %>
+            <a href="/home?page=<%= nextPage%>" ><%= nextPage%></a>
+            <% } %>
+
+            <%  if(lastPage != currentPage && lastPage != nextPage) { %>
+            <a href="/home?page=<%= lastPage%>" ><%= lastPage%></a>
+            <% } %>
+
+        </div>
+      </div>
 </body>
 </html>

@@ -13,6 +13,8 @@ router.get(
 );
 
 const Create_Blog_controller = require("../controllers/User/new_blog");
-router.post("/new_blog", sessionChecker, Create_Blog_controller.Create_Blog);
+router.get("/new_blog", sessionChecker, Create_Blog_controller.New_Blog);
+router.get("/my_blogs", sessionChecker, Create_Blog_controller.My_Blog);
+router.post("/create_blog", sessionChecker, Create_Blog_controller.Create_Blog);
 
 module.exports = router;

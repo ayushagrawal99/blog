@@ -31,7 +31,7 @@ module.exports.Admin_SignIn = async (req, res, next) => {
 
             if (user) {
                 req.session.user = user.dataValues;
-                return res.redirect("/User/user_dashboard");
+                return res.redirect("/User/user_dashboard?page=1");
             } else {
                 res.status(400).json({ message: "This User is not exist" });
                 return;

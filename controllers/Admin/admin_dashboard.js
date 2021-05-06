@@ -4,7 +4,7 @@ const User = require("../../models/Users");
 
 module.exports.Admin_Dashboard = async (req, res, next) => {
     try {
-        const ITEMS_PER_PAGE = 8;
+        const ITEMS_PER_PAGE = 7;
         let page = +req.query.page || 1;
         const offset = (page - 1) * ITEMS_PER_PAGE;
         const limit = ITEMS_PER_PAGE;

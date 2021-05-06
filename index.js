@@ -4,11 +4,40 @@ const app = express();
 const db = require("./config/database");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, "/images"));
+    },
+    filename: function (req, file, cb) {
+        cb(
+            null,
+            new Date().toISOString().replace(/:/g, "-") +
+                "-" +
+                file.originalname
+        );
+    },
+});
+
+const fileFilter = (req, file, cb) => {
+    if (
+        file.mimetype === "image/png" ||
+        file.mimetype === "image/jpg" ||
+        file.mimetype === "image/jpeg"
+    ) {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
 
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(multer({ storage: storage, fileFilter: fileFilter }).single("file"));
+// app.use(multer({ dest: "images" }).single("file"));
 
 app.use(express.static("./assets"));
 
@@ -47,7 +76,7 @@ app.use("/", require("./routes/index"));
 // For create tables
 db.sync()
     .then((result) => console.log("Working"))
-    .catch((err) => console.log("error"));
+    .catch((err) => console.log("error on db sync"));
 
 // server
 app.listen(3000, () => {

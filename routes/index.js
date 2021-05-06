@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const home_controller = require("../controllers/home");
-router.get("/", home_controller.Home);
+router.get("/home", home_controller.Home);
 router.get("/admin-sign-up", home_controller.Admin_Signup);
 router.get("/admin-sign-in", home_controller.Admin_SignIn);
 

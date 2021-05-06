@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/new_blog.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/User/user_dashboard?page=1">
+                    <span>
+                        Blogs
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/new_blog">
+                    <span>
+                        New Blog
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/my_blogs?page=1">
+                    <span>
+                        My Blogs
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="log-out">
+            <a href="/log-out">
+                <span>
+                    Log Out
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="blog">
+        <form action="/User/create_blog" method="post" enctype="multipart/form-data">
+            <div class="input">
+                <label class="label" for="title">Title :</label>
+                <input type="text" name="title" class="input-title" id="title" placeholder="Blog title" required>
+            </div>
+            <div class="input">
+                <label class="label" for="cat">Category :</label>
+                <select class="select" id="cat" name="category">
+                    <option value="food">Food</option>
+                    <option value="music">Music</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="lifestyle">Lifestyle</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="sports">Sports</option>
+                    <option value="travel">Travel</option>
+                    <option value="political">Political</option>
+                    <option value="business">Business</option>
+                    <option value="personal">Personal</option>
+                    <option value="movie">Movie</option>
+                </select>
+            </div>
+            <div class="input">
+                <label class="label" for="description">Description :</label>
+                <textarea class="description" name="description"  id="" cols="28" rows="4"></textarea>
+            </div>
+            <div class="input">
+                <label class="label" for="file">Image :</label>
+                <input type="file" name="file" class="input-image" id="file" required>
+            </div>
+            <div class="form-fields-submit input">
+                <button type="submit">
+                    <span>Submit</span>
+                </button>
+            </div>
+    
+        </form>
+    </div>
+</body>
+</html>
+
