@@ -42,7 +42,6 @@
         </div>
     </nav>
 
-    
     <% if( blogs && blogs.length !== 0) { %>
         <div class="all-blog">
             <% for(let blog of blogs) { %>
@@ -53,17 +52,13 @@
                     <p class="wrapper"><%= blog.description %></p>
                     <div class="access">
 
-                        <% if(user.updateOnly) { %>
-                            <div class="btn-wrapper update">
-                                <a href="#">UPDATE</a>
-                            </div> 
-                        <% } %>
+                        <div class="btn-wrapper update">
+                            <a href="#">UPDATE</a>
+                        </div> 
 
-                        <% if(user.deleteOnly) { %>
-                            <div class="btn-wrapper delete">
-                                <a href="#">DELETE</a>
-                            </div>
-                        <% } %>
+                        <div class="btn-wrapper delete">
+                            <a href="#">DELETE</a>
+                        </div>
 
                     </div>
                     <p><button>Full Blog</button></p>
@@ -76,21 +71,21 @@
             <div class="pagination">
                 
                 <% if(currentPage != 1 && previousPage != 1) { %>
-                    <a href="/User/user_dashboard?page=1">1</a>
+                    <a href="/User/my_blogs?page=1">1</a>
                 <% } %>
 
                 <% if(hasPreviousPage) { %>
-                    <a href="/User/user_dashboard?page=<%= previousPage%>" ><%= previousPage%></a>
+                    <a href="/User/my_blogs?page=<%= previousPage%>" ><%= previousPage%></a>
                 <% } %>
 
-                <a href="/User/user_dashboard?page=<%= currentPage%>" class="active"><%= currentPage%></a>
+                <a href="/User/my_blogs?page=<%= currentPage%>" class="active"><%= currentPage%></a>
 
                 <% if(hasNextPage) { %>
-                <a href="/User/user_dashboard?page=<%= nextPage%>" ><%= nextPage%></a>
+                <a href="/User/my_blogs?page=<%= nextPage%>" ><%= nextPage%></a>
                 <% } %>
 
                 <%  if(lastPage != currentPage && lastPage != nextPage) { %>
-                <a href="/User/user_dashboard?page=<%= lastPage%>" ><%= lastPage%></a>
+                <a href="/User/my_blogs?page=<%= lastPage%>" ><%= lastPage%></a>
                 <% } %>
 
             </div>
