@@ -68,7 +68,7 @@ nav ul li a span{
     margin-top: 20px;
   }
   
-  button {
+  .btn {
     border: none;
     outline: 0;
     display: inline-block;
@@ -81,7 +81,7 @@ nav ul li a span{
     font-size: 18px;
   }
   
-  button:hover, a:hover {
+  .btn:hover, a:hover {
     opacity: 0.7;
   }
 
@@ -112,3 +112,52 @@ nav ul li a span{
   }
   
   .pagination a:hover:not(.active) {background-color: #ddd;}
+
+  .no-blog {
+    color: red;
+    margin: 20px 0 0 50px;
+  }
+
+
+  .topnav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .search-container{
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 11px;
+    margin-top: 20px;
+  }
+
+  .topnav input {
+    padding: 6px;
+    font-size: 17px;
+    border:none;
+    border-radius: 11px;
+  }
+
+  .topnav input:focus{
+    outline:none
+  }
+
+  .search-container button:focus{
+    outline:none
+  }
+  
+  .search-container button {
+    padding: 6px 10px;
+    margin-left: -4px;
+    background: #ddd;
+    font-size: 19px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 11px 11px 0;
+  }
+  
+  .search-container button:hover {
+    background: #ccc;
+  }

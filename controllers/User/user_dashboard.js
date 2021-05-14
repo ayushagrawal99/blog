@@ -27,6 +27,8 @@ module.exports.User_Dashboard = async (req, res, next) => {
             limit,
             offset,
             order: [["id", "DESC"]],
+
+            include: [User],
         });
 
         const user_data = await User.findOne({

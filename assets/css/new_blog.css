@@ -75,6 +75,12 @@ nav ul li a span{
     margin-right: 20px;
 }
 
+.text-area {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 30px;
+}
+
 .input-title {
     box-sizing:border-box;
     width:65%;

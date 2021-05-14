@@ -32,6 +32,13 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href="/User/category?page=1">
+                    <span>
+                        Category
+                    </span>
+                </a>
+            </li>
         </ul>
         <div class="log-out">
             <a href="/log-out">
@@ -49,20 +56,23 @@
                 <input type="text" name="title" class="input-title" id="title" placeholder="Blog title" required>
             </div>
             <div class="input">
-                <label class="label" for="cat">Category :</label>
-                <select class="select" id="cat" name="category">
-                    <option value="food">Food</option>
-                    <option value="music">Music</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="lifestyle">Lifestyle</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="sports">Sports</option>
-                    <option value="travel">Travel</option>
-                    <option value="political">Political</option>
-                    <option value="business">Business</option>
-                    <option value="personal">Personal</option>
-                    <option value="movie">Movie</option>
-                </select>
+                <% if(user.categoryAccess) { %>
+                    <label class="label" for="cat">Category :
+                        <input class="text-area" list="browsers" name="category" />
+                    </label>
+                    <datalist id="browsers">
+                        <% for( let category of categories) { %> 
+                            <option value="<%= category.category%>"></option>
+                        <% } %>
+                    </datalist>
+                <% } else { %>
+                    <label class="label" for="cat">Category :</label>
+                    <select class="select" id="cat" name="category">
+                        <% for( let category of categories) { %> 
+                            <option value="food"><%= category.category%></option>
+                        <% } %>
+                    </select>
+                <% } %>
             </div>
             <div class="input">
                 <label class="label" for="description">Description :</label>

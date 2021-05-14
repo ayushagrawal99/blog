@@ -21,6 +21,10 @@ const User = db.define("user", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    categoryAccess: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+    },
     readOnly: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,

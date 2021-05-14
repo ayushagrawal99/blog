@@ -5,6 +5,15 @@ const db = require("./config/database");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
+const moment = require("moment");
+
+app.locals.fromNow = function (date) {
+    return moment(date).fromNow();
+};
+
+app.locals.format = function (date) {
+    return moment(date).format("DD-MM-YYYY");
+};
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -37,9 +46,9 @@ app.set("views", "views");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(multer({ storage: storage, fileFilter: fileFilter }).single("file"));
-// app.use(multer({ dest: "images" }).single("file"));
 
 app.use(express.static("./assets"));
+app.use("/images", express.static(__dirname + "/images"));
 
 // initialize cookie-parser to allow us access the cookies stored in the browser.
 app.use(cookieParser());

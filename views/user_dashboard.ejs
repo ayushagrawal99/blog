@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/user_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -32,6 +33,13 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href="/User/category?page=1">
+                    <span>
+                        Category
+                    </span>
+                </a>
+            </li>
         </ul>
         <div class="log-out">
             <a href="/log-out">
@@ -42,31 +50,36 @@
         </div>
     </nav>
 
-    
     <% if( blogs && blogs.length !== 0) { %>
         <div class="all-blog">
             <% for(let blog of blogs) { %>
 
                 <div class="card">
-                    <img src="https://cdn.pixabay.com/photo/2020/12/25/11/57/flamingos-5859192_960_720.jpg" alt="John" style="width:100%">
+                    <img src="/images/<%= blog.image_url%>" alt="<%= blog.title %>" style="width:100%; height: 250px;">
                     <p class="title"><%= blog.title %></p>
                     <p class="wrapper"><%= blog.description %></p>
                     <div class="access">
 
-                        <% if(user.updateOnly) { %>
+                        <% if(user.updateOnly || blog.user.id === user.id) { %>
                             <div class="btn-wrapper update">
-                                <a href="#">UPDATE</a>
+                                <form action="/User/update-blog" method="POST">
+                                    <input type="hidden" name="id" value="<%= blog.id %>">
+                                    <button class="btn" type="submit">UPDATE</button>
+                                </form>
                             </div> 
                         <% } %>
 
-                        <% if(user.deleteOnly) { %>
+                        <% if(user.deleteOnly || blog.user.id === user.id) { %>
                             <div class="btn-wrapper delete">
-                                <a href="#">DELETE</a>
+                                <form action="/User/delete-blog" method="POST">
+                                    <input type="hidden" name="id" value="<%= blog.id %>">
+                                    <button class="btn" type="submit">DELETE</button>
+                                </form>
                             </div>
                         <% } %>
 
                     </div>
-                    <p><button>Full Blog</button></p>
+                    <p><button class="btn"><%= fromNow(blog.createdAt)%></button></p>
                 </div>
         
             <% } %>  

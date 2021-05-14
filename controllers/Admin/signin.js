@@ -38,7 +38,7 @@ module.exports.Admin_SignIn = async (req, res, next) => {
             }
         }
     } catch (error) {
-        console.log("Error");
+        console.log("Error", error);
         return;
     }
 };

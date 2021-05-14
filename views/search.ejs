@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home Page</title>
 </head>
 <body>
@@ -36,39 +37,37 @@
         </ul>
     </nav>
 
-    <div class="topnav">
-        <div class="search-container">
-          <form action="/User/search-blog?searchby=category" method="POST">
-            <input type="text" placeholder="Search by category.." name="category">
-            <input type="hidden" name="place" value="home">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
-        </div>
-
-        <div class="search-container">
-            <form action="/User/search-blog?searchby=date" method="POST">
-              <input type="date" placeholder="Search by date.." name="date">
-              <input type="hidden" name="place" value="home">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </div>
-      </div>
-
     <% if( blogs && blogs.length !== 0) { %>
+
+        <div class="topnav">
+            <div class="search-container">
+              <form action="/User/search-blog?searchby=category" method="POST">
+                <input type="text" placeholder="Search by category.." name="category">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+
+            <div class="search-container">
+                <form action="/User/search-blog?searchby=date" method="POST">
+                  <input type="date" placeholder="Search by date.." name="date">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+              </div>
+          </div>
     
         <div class="all-blog">
             <% for(let blog of blogs) { %>
     
                 <div class="card">
-                    <img src="/images/<%= blog.image_url %>" alt="<%= blog.title %>" style="width:100%; height: 250px;">
+                    <img src="<%= blog.image_url%>" alt="John" style="width:100%">
                     <p class="title"><%= blog.title %></p>
                     <p class="wrapper"><%= blog.description %></p>
-                    <p><button class="btn"><%= fromNow(blog.createdAt) %></button></p>
+                    <p><button class="btn">Full Blog</button></p>
                 </div>
         
             <% } %>  
         </div>
-
+    
         <div class="center">
             <div class="pagination">
                 

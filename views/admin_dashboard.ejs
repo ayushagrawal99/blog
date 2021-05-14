@@ -40,9 +40,9 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
-            <th>Read Access</th>
-            <th>Update Access</th>
-            <th>Delete Access</th>
+            <th>Category Access</th>
+            <th>Blog Update Access</th>
+            <th>Blog Delete Access</th>
             <th>Update</th>
         </tr>
         <% for(let user of users) { %>
@@ -52,7 +52,7 @@
                 <input type="hidden" name="name" value='<%= user.name%>'>
                 <td><%= user.email%></td>
                 <input type="hidden" name="email" value='<%= user.email%>'>
-                <td><input type="checkbox" name="readOnly" value="read" <%= user.readOnly ? "checked" : "" %>></td>
+                <td><input type="checkbox" name="categoryAccess" value="categoryAccess" <%= user.categoryAccess ? "checked" : "" %>></td>
                 <td><input type="checkbox" name="updateOnly" value="update" <%= user.updateOnly ? "checked" : "" %> ></td>
                 <td><input type="checkbox" name="deleteOnly" value="delete" <%= user.deleteOnly ? "checked" : "" %>></td>
                 <td><button type="submit" class="btn">Update</button></td>
@@ -60,6 +60,8 @@
         </tr>
         <% } %>
     </table>
+
+    <% if( users && users.length !== 0) { %>
 
     <div class="center">
         <div class="pagination">
@@ -83,6 +85,10 @@
             <% } %>
 
         </div>
-      </div>
+    </div>
+
+    <% }  else {%>
+        <h3 class="no-blog">There is No Users. Please Create New Users.</h3>
+    <% } %>
 </body>
 </html>

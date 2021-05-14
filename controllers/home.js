@@ -1,5 +1,5 @@
-const User = require("../models/Users");
 const Blog = require("../models/Blog");
+const { Sequelize } = require("sequelize");
 
 module.exports.Home = async (req, res, next) => {
     try {
@@ -8,11 +8,38 @@ module.exports.Home = async (req, res, next) => {
         const offset = (page - 1) * ITEMS_PER_PAGE;
         const limit = ITEMS_PER_PAGE;
 
+        // const all_blog = await Blog.findAll({
+        //     attributes: [
+        //         "id",
+        //         "title",
+        //         "category",
+        //         "description",
+        //         "image_url",
+        //         "user_id",
+        //         "updatedAt",
+        //         [
+        //             Sequelize.fn(
+        //                 "to_date",
+        //                 Sequelize.col("createdAt"),
+        //                 "YYYY-MM-DD"
+        //             ),
+        //             "createdAt",
+        //         ],
+        //     ],
+        //     limit,
+        //     offset,
+        //     order: [["id", "DESC"]],
+        // });
+
+        // console.log(all_blog);
+
         const all_blog = await Blog.findAll({
             limit,
             offset,
             order: [["id", "DESC"]],
         });
+
+        // console.log(all_blog);
 
         const count = await Blog.count();
 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/category.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Category</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/User/user_dashboard?page=1">
+                    <span>
+                        Blogs
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/new_blog">
+                    <span>
+                        New Blog
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/my_blogs?page=1">
+                    <span>
+                        My Blogs
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/category?page=1">
+                    <span>
+                        Category
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="log-out">
+            <a href="/log-out">
+                <span>
+                    Log Out
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <% if(user.categoryAccess) {%>
+        <div class="add">
+            <form action="/User/add-category" method="POST">
+                <input type="text" name="category" id="add-cat" placeholder="Add Category">
+                <button class="btn" type="submit">ADD</button>
+            </form>
+        </div>
+        <% if(errors) { %>
+            <% for(let error of errors) { %>
+                <div>
+                    <p><%= error%></p>
+                </div>
+            <% } %>
+        <% } %>
+
+        <table id="customers">
+            <tr>
+                <th>Category</th>
+                <th>Created Date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <% if(category.length !== 0) { %>
+                <% for(let cat of category) { %>
+                    <tr>
+                        <form action="/User/update-category" method="POST">
+                            <td><input type="text" name="category_value" value="<%= cat.category%>" ></td>
+                            <td><%= format(cat.createdAt) %></td>
+                            <input type="hidden" name="category_id" value="<%= cat.id%>">
+                            <td><button type="submit" class="table-btn">Update</button></td>
+                        </form>
+                        <form action="/User/delete-category" method="POST">
+                            <input type="hidden" name="category_id" value="<%= cat.id%>">
+                            <td><button type="submit" class="table-btn">Delete</button></td>
+                        </form>
+                    </tr>
+                <% } %>
+            <% } %>
+        </table>
+    <% } else { %>
+        <table id="customers" style="width: 30%;">
+            <tr>
+                <th>Category</th>
+                <th>Created Date</th>
+            </tr>
+            <% if(category.length !== 0) { %>
+                <% for(let cat of category) { %>
+                    <tr>
+                        <td><%= cat.category%></td>
+                        <td><%= format(cat.createdAt) %></td>
+                    </tr>
+                <% } %>
+            <% } %>
+        </table>
+    <% } %>
+
+    <div class="center">
+        <div class="pagination">
+            
+            <% if(currentPage != 1 && previousPage != 1) { %>
+                <a href="/User/category?page=1">1</a>
+            <% } %>
+
+            <% if(hasPreviousPage) { %>
+                <a href="/User/category?page=<%= previousPage%>" ><%= previousPage%></a>
+            <% } %>
+
+            <a href="/User/category?page=<%= currentPage%>" class="active"><%= currentPage%></a>
+
+            <% if(hasNextPage) { %>
+            <a href="/User/category?page=<%= nextPage%>" ><%= nextPage%></a>
+            <% } %>
+
+            <%  if(lastPage != currentPage && lastPage != nextPage) { %>
+            <a href="/User/category?page=<%= lastPage%>" ><%= lastPage%></a>
+            <% } %>
+
+        </div>
+    </div>
+    
+</body>
+</html>
+

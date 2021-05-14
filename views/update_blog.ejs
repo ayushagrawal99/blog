@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/update_blog.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="/User/user_dashboard?page=1">
+                    <span>
+                        Blogs
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/new_blog">
+                    <span>
+                        New Blog
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="/User/my_blogs?page=1">
+                    <span>
+                        My Blogs
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="log-out">
+            <a href="/log-out">
+                <span>
+                    Log Out
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="blog">
+        <form action="/User/blog_update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%= blog.id %>">
+
+            <div class="left-div">
+                <div class="image-div">
+                    <img src="/images/<%= blog.image_url %>" alt="<%= blog.title %>" >
+                    <input type="file" name="file" class="input-image" id="file">
+                </div>
+            </div>
+
+            <div class="right-div">
+                <div class="input1">
+                    <label class="label1" for="title">Title :</label>
+                    <input type="text" name="title" value="<%= blog.title %>" class="input-title" id="title" placeholder="Blog title" required>
+                </div>
+
+                <div class="input1">
+                    <% if(user.categoryAccess) { %>
+                        <label class="label1" for="cat">Category :
+                            <input class="text-area" list="browsers" name="category" value="<%= blog.category%>"/>
+                        </label>
+                        <datalist id="browsers">
+                            <% for( let category of categories) { %> 
+                                <option value="<%= category.category%>"></option>
+                            <% } %>
+                        </datalist>
+                    <% } else { %>
+                        <label class="label1" for="cat">Category :</label>
+                        <select class="select" id="cat" name="category">
+                            <% for( let category of categories) { %> 
+                                <option value="<%= category.category%>"><%= category.category%></option>
+                            <% } %>
+                        </select>
+                    <% } %>
+                </div>
+
+                <div class="input1">
+                    <label class="label1" for="description">Description :</label>
+                    <textarea class="description" name="description" id="" cols="100" rows="5"><%= blog.description %></textarea>
+                </div>
+
+                <div class="form-fields-submit">
+                    <button type="submit">
+                        <span>Update</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+<script>
+    handleImageUpload = (e) => {
+        const file = e.target.files[0]
+       console.log(file)
+        }
+</script>
+</html>
+

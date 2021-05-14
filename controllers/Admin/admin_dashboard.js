@@ -42,7 +42,7 @@ module.exports.Update_User = async (req, res, next) => {
 
         await User.update(
             {
-                readOnly: req.body.readOnly ? true : false,
+                categoryAccess: req.body.categoryAccess ? true : false,
                 updateOnly: req.body.updateOnly ? true : false,
                 deleteOnly: req.body.deleteOnly ? true : false,
             },

@@ -21,13 +21,12 @@ nav ul li{
 }
 
 nav ul li a{
-    text-decoration: none;
-}
+  text-decoration: none;
+} 
 
 nav ul li a:hover{
-  text-decoration: none;
+    text-decoration: none;
 }
-
 
 nav ul li a span{
     font-size: 20px;
@@ -45,24 +44,46 @@ nav ul li a span{
     text-decoration: none;
 }
 
-.log-out a:hover {
-  text-decoration: none;
-}
-
 .log-out a span{
     font-size: 20px;
     font-weight: 600;
     color: white;
 }
 
+
+.add{
+  width: 20%;
+  margin: 25px auto;
+}
+
+#add-cat{
+  padding: 5px;
+  font-size: 17px;
+}
+
+.btn {
+  border: none;
+  color: white;
+  background-color: DodgerBlue;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: -5px;
+}
+
+.table-btn{
+  cursor: pointer;
+  border: none;
+}
+
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 80%;
+    width: 50%;
     margin: auto;
     margin-top: 20px;
   }
-  
+
   #customers td, #customers th {
     border: 1px solid #ddd;
     padding: 12px;
@@ -78,10 +99,6 @@ nav ul li a span{
     text-align: left;
     background-color: DodgerBlue;
     color: white;
-  }
-  
-  .btn {
-      cursor: pointer;
   }
 
   .center {
@@ -116,3 +133,5 @@ nav ul li a span{
     color: red;
     margin: 20px 0 0 50px;
   }
+
+ 
